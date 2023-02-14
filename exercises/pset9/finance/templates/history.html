@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+        <h2>History</h2>
+        <table id="stocks_table" class ="centered" style="visibility:{{visibility}}">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Symbol</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+             {%for i in range(0 , rows)%}
+                <tr>
+                    <td>{{result[i]['type']}}</td>
+                    <td>{{result[i]['symbol']}}</td>
+                    <td>{{result[i]['amount']}}</td>
+                    <td>{{result[i]['price']}}</td>
+                    <td>{{result[i]['total']}}</td>
+                    <td>{{result[i]['date']}}</td>
+                    <td>{{result[i]['time']}}</td>
+                </tr>
+             {%endfor%}
+            </tbody>
+        </table>
+    <script>
+        document.getElementById("insert_table").innerHTML = `{{table|safe}}`;
+    </script>
+{% endblock %}
+

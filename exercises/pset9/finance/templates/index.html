@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+        <h2>Quotes</h2>
+        <table id="stocks_table" class ="centered" style="visibility:{{visibility}}">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id ="insert_table"></tbody>
+            {%for i in range(0 , rows)%}
+            <tr>
+                <td>{{stocks[i]['symbol']}}</td>
+                <td>{{stocks[i]['name']}}</td>
+                <td>{{stocks[i]['quantity']}}</td>
+                <td>{{stocks[i]['price']}}</td>
+                <td>{{(stocks[i]['total'])}}</td>
+            </tr>
+            {%endfor%}
+            <tr><td>CASH</td><td></td><td></td><td></td><td>{{balance}}</td></tr>
+            <tr><td>TOTAL</td><td></td><td></td><td></td><td>{{total_balance}}</td></tr>
+        </table>
+{% endblock %}

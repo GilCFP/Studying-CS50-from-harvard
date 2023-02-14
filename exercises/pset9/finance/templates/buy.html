@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post">
+            <div class="form-group">
+                <ul class="buy_title">
+                    <li class="buy_itens">Name of the stock</li>
+                    <li class="buy_itens">Quantity</li>
+                    <li class="buy_itens">Password</li>
+                </ul>
+                <p>
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Stock's name" type="text">
+                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Quantity" type="text" onkeypress= "return event.charCode >= 48 && event.charCode <= 57">
+                <input autocomplete="off" class="form-control" name="password" placeholder="Password" type="password">
+                <button class="btn btn-primary" type="submit">Buy</button>
+                </p>
+                <p id="current_balance"> Your current balance is: {{balance}} </p>
+
+            </div>
+
+    </form>
+    <script>
+        function onlynumber(evt) {
+            var theEvent = evt || window.event;
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode( key );
+            //var regex = /^[0-9.,]+$/;
+            var regex = /^[0-9.]+$/;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+   }
+}
+    </script>
+{% endblock %}
+
